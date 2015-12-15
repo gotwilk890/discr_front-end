@@ -58,3 +58,10 @@ var form2object = function(form) {
   });
   return data;
 };
+
+var callback = function(error, data) {
+  if (error) {
+    console.log(JSON.stringify(error));
+  }
+  console.log(JSON.stringify(data));
+};
