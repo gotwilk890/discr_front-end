@@ -2,7 +2,7 @@
 
 var authAPI = {
 
-  api_url: 'https://localhost:3000',
+  api_url: 'http://localhost:3000',
 
   ajax: function(config, cb){
     $.ajaxSetup({
@@ -22,8 +22,7 @@ var authAPI = {
       method: 'POST',
       url: this.api_url +'/signup',
       contentType:'application/json; charset=utf-8',
-      data: JSON.stringify(credentials),
-      dataType: 'json'
+      data: JSON.stringify(credentials)
     }, callback);
   },
 
@@ -32,8 +31,7 @@ var authAPI = {
       method: 'POST',
       url: this.api_url +'/login',
       contentType:'application/json; charset=utf-8',
-      data: JSON.stringify(credentials),
-      dataType: 'json'
+      data: JSON.stringify(credentials)
     }, callback);
   },
 
@@ -43,7 +41,6 @@ var authAPI = {
       url: this.api_url+'/logout',
       contentType:'application/json; charset=utf-8',
       data: JSON.stringify({}),
-      dataType: 'json'
     }, callback);
   }
 };
@@ -65,3 +62,24 @@ var callback = function(error, data) {
   }
   console.log(JSON.stringify(data));
 };
+
+$(document).ready(function(){
+
+$('#form').on('submit', function(e) {
+    $('#status').html('Please Wait...');
+    e.preventDefault();
+    var credentials = form2object(this);
+    console.log(credentials);
+    var cb = function cb(error, data) {
+      if (error) {
+        callback(error);
+        $('#status').html('Try Again!');
+        return;
+      }
+      callback(null, data);
+      $('#status').html('Success!');
+    };
+    authAPI.login(credentials, cb);
+  });
+});
+
