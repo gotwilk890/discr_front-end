@@ -65,11 +65,11 @@ var callback = function(error, data) {
 
 $(document).ready(function(){
 
-$('#form').on('submit', function(e) {
+$('#login-form').on('submit', function(e) {
     $('#status').html('Please Wait...');
     e.preventDefault();
     var credentials = form2object(this);
-    console.log(credentials);
+    var user = credentials.username;
     var cb = function cb(error, data) {
       if (error) {
         callback(error);
@@ -78,6 +78,8 @@ $('#form').on('submit', function(e) {
       }
       callback(null, data);
       $('#status').html('Success!');
+      $('#aboutModal').modal('hide');
+      $('#modal1').html('Logout '+ user);
     };
     authAPI.login(credentials, cb);
   });
