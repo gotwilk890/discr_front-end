@@ -77,11 +77,60 @@ $('#login-form').on('submit', function(e) {
         return;
       }
       callback(null, data);
-      $('#status').html('Success!');
+      $('#status').html('');
+      $('#login-form').hide();
+      $('#logout').show();
       $('#aboutModal').modal('hide');
       $('#modal1').html('Logout '+ user);
+      $('#modal-header').hide();
+      $('.login-msg').hide();
+      $('#login-form')[0].reset();
     };
     authAPI.login(credentials, cb);
+  });
+
+  $('#register-form').on('submit', function(e) {
+    $('#status').html('Please Wait...');
+    e.preventDefault();
+    var credentials = form2object(this);
+    var cb = function cb(error, data) {
+      if (error) {
+        callback(error);
+        $('#status').html('Try Again!');
+        return;
+      }
+      callback(null, data);
+      $('#status').html('Now login!');
+      $('#login-form').show();
+      $('#register-form').hide();
+      $('.login-msg').show();
+      $('.register-msg').hide();
+      $('#modal-header').html('Login');
+      $('#register-form')[0].reset();
+
+    };
+    authAPI.register(credentials, cb);
+  });
+
+  $('#logout').click(function(e) {
+    e.preventDefault();
+    var cb = function cb(error, data) {
+      if (error) {
+        callback(error);
+        $('#status').html('Try Loggin in first!');
+        return;
+      }
+      callback(null, data);
+      $('#status').html('Now login!');
+      $('#login-form').show();
+      $('.login-msg').show();
+      $('#modal-header').show();
+      $('#modal1').html('Login');
+      $('#aboutModal').modal('hide');
+      $('#logout').hide();
+
+    };
+    authAPI.logout(cb);
   });
 });
 
