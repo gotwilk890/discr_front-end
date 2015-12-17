@@ -46,8 +46,9 @@ function initMap() {
     url: "http://localhost:3000/courses",
     dataType: "json"
     }).done(function(data){
-      var lat = Number(data[0].lat);
-      var lng = Number((data[0].lng))
+      data.forEach(function(course){
+      var lat = Number(course.lat);
+      var lng = Number(course.lng);
       myLatLng = new google.maps.LatLng(lat, lng);
       var icon = {
         url: 'http://i711.photobucket.com/albums/ww115/CodyFLee/BasketFavIcon48x48.jpg',
@@ -59,17 +60,18 @@ function initMap() {
       var marker = new google.maps.Marker({
         map: map,
         icon: icon,
-        title: data[0].name,
+        title: course.name,
         position: myLatLng,
         animation: google.maps.Animation.DROP
       });
       var infowindow = new google.maps.InfoWindow({
-        content: "<a>" + data[0].name + "</a>"
+        content: "<a>" + course.name + "</a>"
         });
       marker.addListener("mouseover", function(){
         infowindow.open(map, marker);
       });
       markers.push(marker);
+    });
 
     }).fail(function(data){
     console.error(data);
