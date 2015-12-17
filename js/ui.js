@@ -16,12 +16,31 @@ $(document).ready(function(){
     $('#modal-header').html('Login');
   });
 
-    $('#create-course').click(function(e){
-    e.preventDefault();
+    $('#create-course').click(function(){
     $('#aboutModal').modal('show');
     $('#login-form').hide();
+    $('#logout').hide();
+    $('#register-form').hide();
     $('#create-course-form').show();
     $('.login-msg').hide();
+    $('#modal-header').show();
     $('#modal-header').html('Create a Course');
   });
+    $('#modal1').click(function(){
+      if($('#modal1').html() === 'Login'){
+        $('#login-form').show();
+        $('.login-msg').show();
+        $('#modal-header').show();
+        $('#create-course-form').hide();
+      }
+      else {
+        $('#status').html('');
+        $('#create-course-form').hide();
+        $('#logout').show();
+        $('#modal-header').html('');
+        $('.login-msg').hide();
+        $('.register-msg').hide();
+      }
+    });
+
 });

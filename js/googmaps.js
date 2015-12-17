@@ -6,7 +6,6 @@ function initMap() {
         map.setCenter(initialLocation);
     });
   }
-  var geocoder = new google.maps.Geocoder();
   var map = new google.maps.Map(document.getElementById('gmap'), {
     center: {lat: -33.8688, lng: 151.2195},
     zoom: 13,
@@ -77,19 +76,6 @@ function initMap() {
     console.error(data);
     });
 
-    geocoder.geocode( { 'address': places[0].formatted_address}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        console.log(results[0].geometry.location.lng());
-        console.log(results[0].geometry.location.lat());
-        console.log(results[0]);
-        console.log(map.getBounds().contains(myLatLng));
-        console.log(myLatLng);
-        // console.log(map.getBounds().contains(latlng: myLatLng));
-      } else {
-        alert("Geocode was not successful for the following reason: " + status);
-      }
-    });
-
     // For each place, get the icon, name and location.
     var bounds = new google.maps.LatLngBounds();
     places.forEach(function(place) {
@@ -119,3 +105,4 @@ function initMap() {
     map.fitBounds(bounds);
   });
 }
+

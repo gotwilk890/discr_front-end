@@ -121,7 +121,7 @@ $('#login-form').on('submit', function(e) {
         return;
       }
       callback(null, data);
-      $('#status').html('Now login!');
+      $('#status').html('');
       $('#login-form').show();
       $('.login-msg').show();
       $('#modal-header').show();
