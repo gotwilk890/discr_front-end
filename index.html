@@ -73,6 +73,7 @@
                             <input id="pac-input" class="controls" type="text" placeholder="Search Box">
                             <div id="gmap"><input id="pac-input" class="controls" type="text" placeholder="Search Box"></div>
                         </br>
+                        <p> Don't see a course you know? <a id="create-course"> Create Course </a></p>
                     </div>
                 </div>
             </div>
@@ -404,6 +405,46 @@
                 <button type="submit" class="btn">Register!</button>
             </form>
             <button id="logout" class="btn">Logout!</button>
+            <form id="create-course-form" role="form" class="registration-form">
+                <div class="form-group">
+                    <label class="sr-only" for="form-first-name">Course Name</label>
+                    <input name = "name" type="text" name="form-first-name" placeholder="Course name..." class="form-first-name form-control" id="form-first-name">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="form-last-name">Street Address</label>
+                    <input name="street_address" type="text" name="form-last-name" placeholder="Street Address..." class="form-last-name form-control" id="form-last-name">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="form-last-name">Town</label>
+                    <input name="town" type="text" name="form-last-name" placeholder="Town..." class="form-last-name form-control" id="form-last-name">
+                </div>
+                 <div class="form-group">
+                    <label class="sr-only" for="form-last-name">State</label>
+                    <input name="state" type="text" name="form-last-name" placeholder="State..." class="form-last-name form-control" id="form-last-name">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="form-last-name">Country</label>
+                    <input name="country" type="text" name="form-last-name" placeholder="Country..." class="form-last-name form-control" id="form-last-name">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="form-last-name">Holes</label>
+                    <input name="holes" type="text" name="form-last-name" placeholder="How many holes..." class="form-last-name form-control" id="form-last-name">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="form-last-name">Tees</label>
+                    <input name="tees" type="text" name="form-last-name" placeholder="What kind of tees" class="form-last-name form-control" id="form-last-name">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="form-last-name">Layout</label>
+                    <input name="layout" type="text" name="form-last-name" placeholder="Layout: woods, open field, desert..." class="form-last-name form-control" id="form-last-name">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="form-last-name">Fee</label>
+                    <input name="fee" type="text" name="form-last-name" placeholder="cost to play..." class="form-last-name form-control" id="form-last-name">
+                </div>
+
+                <button type="submit" class="btn">Create Course!</button>
+            </form>
         </br>
         <p class="text-center"id="status"></p>
     </div>
@@ -434,6 +475,7 @@
 </script>
 <script src="js/scripts.js"></script>
 <script type="text/javascript" src="js/authAPI.js" defer charset="utf-8"></script>
+<script type="text/javascript" src="js/courseAPI.js" defer charset="utf-8"></script>
 <script type="text/javascript" src="js/ui.js" defer charset="utf-8"></script>
 </body>
 </html>

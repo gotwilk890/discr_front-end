@@ -15,4 +15,13 @@ $(document).ready(function(){
     $('.register-msg').hide();
     $('#modal-header').html('Login');
   });
+
+    $('#create-course').click(function(e){
+    e.preventDefault();
+    $('#aboutModal').modal('show');
+    $('#login-form').hide();
+    $('#create-course-form').show();
+    $('.login-msg').hide();
+    $('#modal-header').html('Create a Course');
+  });
 });
