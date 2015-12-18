@@ -3,7 +3,7 @@ var usersCourseTemplate = Handlebars.compile($('#users-course').html());
 var editUsersCourseTemplate = Handlebars.compile($('#edit-users-course').html());
 
 
-$(document).on('click','.mark', function(event){
+$(document).on('click','#mark', function(event){
   $.ajax({
     method: "GET",
     url: "https://shrouded-earth-1727.herokuapp.com/courses/" + event.target.innerHTML

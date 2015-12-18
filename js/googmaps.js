@@ -67,7 +67,7 @@ function initMap() {
         animation: google.maps.Animation.DROP
       });
       var infowindow = new google.maps.InfoWindow({
-        content: "<a class='page-scroll mark' href='#two' >" + course.name + "</a>"
+        content: "<a id='mark' class='page-scroll' href='#two' >" + course.name + "</a>"
         });
       marker.addListener("mouseover", function(){
         infowindow.open(map, marker);
