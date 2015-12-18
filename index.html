@@ -29,7 +29,7 @@
                         <a class="page-scroll" href="#one">Search</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#two">Highlights</a>
+                        <a class="page-scroll" href="#two">Course Description</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#three">Gallery</a>
@@ -60,16 +60,16 @@
         </div>
         <video autoplay loop class="fillWidth fadeIn wow collapse in" data-wow-delay="0.5s" poster="http://www.ironliondgs.com/lionofjuda/wp-content/uploads/basketsun5.jpg" id="video-background">
             <source src="https://s3.amazonaws.com/wdi--009/DiscVideo.mp4" type="video/mp4">
-            <source src="assets/video/DiscVideo.webm" type="video/webm">
-                Your browser does not support the video tag. I suggest you upgrade your browser.
-        </video>
-        </header>
-        <section class="bg-primary" id="one">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 text-center">
-                        <h2 class="margin-top-0 text-primary">Search for a course</h2>
-                        <br>
+                <source src="assets/video/DiscVideo.webm" type="video/webm">
+                    Your browser does not support the video tag. I suggest you upgrade your browser.
+                </video>
+            </header>
+            <section class="bg-primary" id="one">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 text-center">
+                            <h2 class="margin-top-0 text-primary">Search for a course</h2>
+                            <br>
                             <input id="pac-input" class="controls" type="text" placeholder="Search Box">
                             <div id="gmap"><input id="pac-input" class="controls" type="text" placeholder="Search Box"></div>
                         </br>
@@ -82,34 +82,50 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <h2 class="margin-top-0 text-primary">Flexible Layouts</h2>
+                        <h2 class="margin-top-0 text-primary">Course Description</h2>
+                        <h4 id="delete-status" class="margin-top-0 text-primary"></h4>
                         <hr class="primary">
                     </div>
                 </div>
             </div>
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 text-center">
-                        <div class="feature">
-                            <i class="icon-lg ion-android-laptop wow fadeIn" data-wow-delay=".3s"></i>
-                            <h3>Responsive</h3>
-                            <p class="text-muted">Your site looks good everywhere</p>
+                <div id="course-desc" class="row">
+                    <script id="course" type="text-x-handlebars-template">
+                        <div class="col-sm-6 text-center">
+                            <div class="feature">
+                                <h3>{{name}}</h3>
+                                <p class="text-muted">{{street_address}}</p>
+                                <p class="text-muted">{{town}} {{state}} {{country}}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 text-center">
-                        <div class="feature">
-                            <i class="icon-lg ion-social-sass wow fadeInUp" data-wow-delay=".2s"></i>
-                            <h3>Customizable</h3>
-                            <p class="text-muted">Easy to theme and customize with SASS</p>
+                        <div class="col-sm-6">
+                            <div class="feature">
+                                <h3>Course Features</h3>
+                                <p class="text-muted">Holes: {{holes}}</p>
+                                <p class="text-muted">Tees: {{tees}}</p>
+                                <p class="text-muted">Layout: {{layout}}</p>
+                                <p class="text-muted">Fee: {{fee}}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 text-center">
-                        <div class="feature">
-                            <i class="icon-lg ion-ios-star-outline wow fadeIn" data-wow-delay=".3s"></i>
-                            <h3>Consistent</h3>
-                            <p class="text-muted">A mature, well-tested, stable codebase</p>
+                    </script>
+                    <script id="users-course" type="text-x-handlebars-template">
+                        <div class="col-sm-6 text-center">
+                            <div class="feature">
+                                <h3 class='editable' contentEditable='false'>{{name}}</h3>
+                                <p class='editable' class="text-muted" contentEditable='false'>{{street_address}}</p>
+                                <p class='editable' class="text-muted" contentEditable='false'>{{town}} {{state}} {{country}}</p>
+                            </div>
                         </div>
-                    </div>
+                        <div class="col-sm-6">
+                            <div class="feature">
+                                <h3>Course Features<i class="glyphicon glyphicon-pencil edit" data-id="{{_id}}"></i><i class="glyphicon glyphicon-remove remove" data-id="{{_id}}"></i></h3>
+                                <p class='editable' class="text-muted" contentEditable='false'>Holes: {{holes}}</p>
+                                <p class='editable' class="text-muted" contentEditable='false'>Tees: {{tees}}</p>
+                                <p class='editable' class="text-muted" contentEditable='false'>Layout: {{layout}}</p>
+                                <p class='editable' class="text-muted" contentEditable='false'>Fee: {{fee}}</p>
+                            </div>
+                        </div>
+                    </script>
                 </div>
             </div>
         </section>
@@ -361,15 +377,15 @@
   <div id="galleryModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-         <div class="modal-body">
-          <img src="//placehold.it/1200x700/222?text=..." id="galleryImage" class="img-responsive" />
-          <p>
-              <br/>
-              <button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true">Close <i class="ion-android-close"></i></button>
-          </p>
+           <div class="modal-body">
+              <img src="//placehold.it/1200x700/222?text=..." id="galleryImage" class="img-responsive" />
+              <p>
+                  <br/>
+                  <button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true">Close <i class="ion-android-close"></i></button>
+              </p>
+          </div>
       </div>
   </div>
-</div>
 </div>
 <div id="aboutModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
@@ -418,7 +434,7 @@
                     <label class="sr-only" for="form-last-name">Town</label>
                     <input name="town" type="text" name="form-last-name" placeholder="Town..." class="form-last-name form-control" id="form-last-name">
                 </div>
-                 <div class="form-group">
+                <div class="form-group">
                     <label class="sr-only" for="form-last-name">State</label>
                     <input name="state" type="text" name="form-last-name" placeholder="State..." class="form-last-name form-control" id="form-last-name">
                 </div>
@@ -445,10 +461,54 @@
 
                 <button type="submit" class="btn">Create Course!</button>
             </form>
+            <div id='modal-body'>
+                <script id="edit-users-course" type="text-x-handlebars-template">
+                <h2>{{name}}</h2>
+                    <form id="edit-course-form" role="form" class="registration-form">
+                        <div class="form-group">
+                            <label class="sr-only" for="form-first-name">Course Name</label>
+                            <input name = "name" type="hidden" name="form-first-name" value="{{name}}" class="form-first-name form-control" id="form-first-name">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-last-name">Street Address</label>
+                            <input name="street_address" type="text" name="form-last-name" value="{{street_address}}" class="form-last-name form-control" id="form-last-name">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-last-name">Town</label>
+                            <input name="town" type="text" name="form-last-name" value="{{town}}" class="form-last-name form-control" id="form-last-name">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-last-name">State</label>
+                            <input name="state" type="text" name="form-last-name" value="{{state}}" class="form-last-name form-control" id="form-last-name">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-last-name">Country</label>
+                            <input name="country" type="text" name="form-last-name" value="{{country}}" class="form-last-name form-control" id="form-last-name">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-last-name">Holes</label>
+                            <input name="holes" type="text" name="form-last-name" value="{{holes}}" class="form-last-name form-control" id="form-last-name">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-last-name">Tees</label>
+                            <input name="tees" type="text" name="form-last-name" value="{{tees}}" class="form-last-name form-control" id="form-last-name">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-last-name">Layout</label>
+                            <input name="layout" type="text" name="form-last-name" value="{{layout}}" class="form-last-name form-control" id="form-last-name">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-last-name">Fee</label>
+                            <input name="fee" type="text" name="form-last-name" value='{{fee}}' class="form-last-name form-control" id="form-last-name">
+                        </div>
+
+                        <button id='edit-data' type="submit" class="btn" data-id="{{_id}}" data-name="{{name}}">Edit Course!</button>
+                    </form>
+                </script>
+            </div>
         </br>
         <p class="text-center"id="status"></p>
     </div>
-</div>
 </div>
 </div>
 <div id="alertModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -471,11 +531,13 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
 <script type="text/javascript" src="js/googmaps.js"></script>
 <script
-    src="https://maps.googleapis.com/maps/api/js?&libraries=places&callback=initMap">
+src="https://maps.googleapis.com/maps/api/js?&libraries=places&callback=initMap">
 </script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/handlebarsjs/4.0.4/handlebars.js"></script>
 <script src="js/scripts.js"></script>
 <script type="text/javascript" src="js/authAPI.js" defer charset="utf-8"></script>
 <script type="text/javascript" src="js/courseAPI.js" defer charset="utf-8"></script>
 <script type="text/javascript" src="js/ui.js" defer charset="utf-8"></script>
+<script type="text/javascript" src="js/handlebars-template.js" defer charset="utf-8"></script>
 </body>
 </html>

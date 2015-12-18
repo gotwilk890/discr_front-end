@@ -1,3 +1,5 @@
+var map;
+var markers = [];
 
 function initMap() {
   if (navigator.geolocation) {
@@ -6,7 +8,7 @@ function initMap() {
         map.setCenter(initialLocation);
     });
   }
-  var map = new google.maps.Map(document.getElementById('gmap'), {
+  map = new google.maps.Map(document.getElementById('gmap'), {
     center: {lat: -33.8688, lng: 151.2195},
     zoom: 13,
     mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -22,7 +24,7 @@ function initMap() {
     searchBox.setBounds(map.getBounds());
   });
 
-  var markers = [];
+
 
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
@@ -49,6 +51,7 @@ function initMap() {
       var lat = Number(course.lat);
       var lng = Number(course.lng);
       myLatLng = new google.maps.LatLng(lat, lng);
+      var bounds = new google.maps.LatLngBounds();
       var icon = {
         url: 'http://i711.photobucket.com/albums/ww115/CodyFLee/BasketFavIcon48x48.jpg',
         size: new google.maps.Size(71, 71),
@@ -64,13 +67,15 @@ function initMap() {
         animation: google.maps.Animation.DROP
       });
       var infowindow = new google.maps.InfoWindow({
-        content: "<a>" + course.name + "</a>"
+        content: "<a class='page-scroll mark' href='#two' >" + course.name + "</a>"
         });
       marker.addListener("mouseover", function(){
         infowindow.open(map, marker);
       });
       markers.push(marker);
     });
+
+      $('#delete-status').html('');
 
     }).fail(function(data){
     console.error(data);

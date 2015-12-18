@@ -1,5 +1,5 @@
 'use strict'
-
+var user;
 var authAPI = {
 
   api_url: 'http://localhost:3000',
@@ -69,7 +69,7 @@ $('#login-form').on('submit', function(e) {
     $('#status').html('Please Wait...');
     e.preventDefault();
     var credentials = form2object(this);
-    var user = credentials.username;
+    user = credentials.username;
     var cb = function cb(error, data) {
       if (error) {
         callback(error);
@@ -114,6 +114,7 @@ $('#login-form').on('submit', function(e) {
 
   $('#logout').click(function(e) {
     e.preventDefault();
+    user=null;
     var cb = function cb(error, data) {
       if (error) {
         callback(error);
