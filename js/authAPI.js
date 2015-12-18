@@ -129,6 +129,7 @@ $('#login-form').on('submit', function(e) {
       $('#modal1').html('Login');
       $('#aboutModal').modal('hide');
       $('#logout').hide();
+      $('#course-desc').html('');
 
     };
     authAPI.logout(cb);
