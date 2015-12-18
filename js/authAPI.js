@@ -2,7 +2,7 @@
 var user;
 var authAPI = {
 
-  api_url: 'http://localhost:3000',
+  api_url: 'https://shrouded-earth-1727.herokuapp.com',
 
   ajax: function(config, cb){
     $.ajaxSetup({

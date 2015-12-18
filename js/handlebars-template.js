@@ -6,7 +6,7 @@ var editUsersCourseTemplate = Handlebars.compile($('#edit-users-course').html())
 $(document).on('click','.mark', function(event){
   $.ajax({
     method: "GET",
-    url: "http://localhost:3000/courses/" + event.target.innerHTML
+    url: "https://shrouded-earth-1727.herokuapp.com/courses/" + event.target.innerHTML
   }).done(function(data){
     console.log(data[0].user);
     console.log(user);

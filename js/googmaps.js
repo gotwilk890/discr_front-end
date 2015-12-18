@@ -44,7 +44,7 @@ function initMap() {
 
     $.ajax({
     method: "GET",
-    url: "http://localhost:3000/courses",
+    url: "https://shrouded-earth-1727.herokuapp.com/courses",
     dataType: "json"
     }).done(function(data){
       data.forEach(function(course){
